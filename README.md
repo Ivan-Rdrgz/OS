@@ -41,7 +41,7 @@ To simplify writing programs for the VM, we need an assembly language and its co
 
 
 # Instruction set
-#OP	I	Instruction 	Semantic in Pseudo C++ Syntax 	Additional Action|
+OP &nbsp;&nbsp;&nbsp;&nbsp;	I &nbsp;&nbsp;&nbsp;&nbsp;	Instruction &nbsp;&nbsp;&nbsp;&nbsp; 	Semantic in Pseudo C++ Syntax 	Additional Action|
 * 00000	0	load RD ADDR	r[RD] = mem[ADDR]
 * 00000	1	loadi RD CONST	r[RD] = CONST
 * 00001	1	store RD ADDR	mem[ADDR] = r[RD]
