@@ -41,38 +41,38 @@ To simplify writing programs for the VM, we need an assembly language and its co
 
 
 # Instruction set
- &nbsp;&nbsp;&nbsp;&nbsp; OP &nbsp;&nbsp;&nbsp;&nbsp;	I &nbsp;&nbsp;&nbsp;&nbsp;	Instruction &nbsp;&nbsp;&nbsp;&nbsp; 	Semantic in Pseudo C++ Syntax 	Additional Action|
-* 00000 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	load RD ADDR	r[RD] = mem[ADDR]
-* 00000 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	loadi RD CONST	r[RD] = CONST
-* 00001 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	store RD ADDR	mem[ADDR] = r[RD]
-* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	add RD RS	r[RD] = r[RD] + r[RS]	Set CARRY
-* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp; 	addi RD CONST	r[RD] = r[RD] + CONST	Set CARRY
-* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	addc RD RS	r[RD] = r[RD] + r[RS] + CARRY	Set CARRY
-* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	addci RD CONST	r[RD] = r[RD] + CONST + CARRY	Set CARRY
-* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	sub RD RS	r[RD] = r[RD] - r[RS]	Set CARRY
-* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subi RD CONST	r[RD] = r[RD] - CONST	Set CARRY
-* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	subc RD RS	r[RD] = r[RD] - r[RS] - CARRY	Set CARRY
-* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subci RD CONST	r[RD] = r[RD] - CONST - CARRY	Set CARRY
-* 00110 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	and RD RS	r[RD] = r[RD] & r[RS]
-* 00110 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	andi RD CONST	r[RD] = r[RD] & CONST
-* 00111 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	xor RD RS	r[RD] = r[RD] ^ r[RS]
-* 00111 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	xori RD CONST	r[RD] = r[RD] ^ CONST
-* 01000 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	compl RD	r[RD] = ~ r[RD]
-* 01001 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shl RD	r[RD] = r[RD] << 1, shift-in-bit = 0	Set CARRY
-* 01010 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shla RD	shl arithmetic	Set CARRY & Sign Extend
-* 01011 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shr RD	r[RD] = r[RD] >> 1, shift-in-bit = 0	Set CARRY
-* 01100 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shra RD	shr arithmetic	Set CARRY & Sign Extend
-* 01101 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	compr RD RS	if r[RD] < r[RS] set LESS reset EQUAL and GREATER; if r[RD] == r[RS] set EQUAL reset LESS and GREATER; if 			r[RD] > r[RS] set GREATER reset EQUAL and LESS
-* 01101 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	compri RD CONST if r[RD] < CONST set LESS reset EQUAL and GREATER; if r[RD] == CONST set EQUAL reset LESS and GREATER; if 			r[RD] > CONST set GREATER reset EQUAL and LESS
-* 01110 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	getstat RD	r[RD] = SR
-* 01111 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	putstat RD	SR = r[RD]
-* 10000 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jump ADDR	pc = ADDR
-* 10001 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jumpl ADDR	if LESS == 1, pc = ADDR, else do nothing
-* 10010 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jumpe ADDR	if EQUAL == 1, pc = ADDR, else do nothing
-* 10011 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jumpg ADDR	if GREATER == 1, pc = ADDR, else do nothing
-* 10100 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	call ADDR	push VM status; pc = ADDR
-* 10101 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	return	pop and restore VM status
-* 10110 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	read RD	read new content of r[RD] from .in file
-* 10111 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	write RD	write r[RD] into .out file
-* 11000 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	halt	halt execution
-* 11001 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	noop	no operation 
+ &nbsp;&nbsp;&nbsp;&nbsp; OP &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;	I &nbsp;&nbsp;&nbsp;&nbsp;	Instruction &nbsp;&nbsp;&nbsp;&nbsp; 	Semantic in Pseudo C++ Syntax 	Additional Action|
+* 00000 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	load  &nbsp;&nbsp;&nbsp;&nbsp; RD ADDR 	r[RD] = mem[ADDR]
+* 00000 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	loadi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = CONST
+* 00001 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	store &nbsp;&nbsp;&nbsp;&nbsp; RD ADDR	mem[ADDR] = r[RD]
+* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	add &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] + r[RS]	Set CARRY
+* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp; 	addi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] + CONST	Set CARRY
+* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	addc &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] + r[RS] + CARRY	Set CARRY
+* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	addci &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] + CONST + CARRY	Set CARRY
+* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	sub &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] - r[RS]	Set CARRY
+* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] - CONST	Set CARRY
+* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	subc &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] - r[RS] - CARRY	Set CARRY
+* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subci &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] - CONST - CARRY	Set CARRY
+* 00110 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	and &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] & r[RS]
+* 00110 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	andi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] & CONST
+* 00111 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	xor  &nbsp;&nbsp;&nbsp;&nbsp;RD RS	r[RD] = r[RD] ^ r[RS]
+* 00111 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	xori  &nbsp;&nbsp;&nbsp;&nbsp;RD CONST	r[RD] = r[RD] ^ CONST
+* 01000 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	compl &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = ~ r[RD]
+* 01001 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shl &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = r[RD] << 1, shift-in-bit = 0	Set CARRY
+* 01010 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shla &nbsp;&nbsp;&nbsp;&nbsp; RD	shl arithmetic	Set CARRY & Sign Extend
+* 01011 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shr &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = r[RD] >> 1, shift-in-bit = 0	Set CARRY
+* 01100 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shra &nbsp;&nbsp;&nbsp;&nbsp; RD	shr arithmetic	Set CARRY & Sign Extend
+* 01101 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	compr &nbsp;&nbsp;&nbsp;&nbsp; RD RS	if r[RD] < r[RS] set LESS reset EQUAL and GREATER; if r[RD] == r[RS] set EQUAL reset LESS and GREATER; if 			r[RD] > r[RS] set GREATER reset EQUAL and LESS
+* 01101 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	compri &nbsp;&nbsp;&nbsp;&nbsp; RD CONST if r[RD] < CONST set LESS reset EQUAL and GREATER; if r[RD] == CONST set EQUAL reset LESS and GREATER; if 			r[RD] > CONST set GREATER reset EQUAL and LESS
+* 01110 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	getstat &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = SR
+* 01111 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	putstat &nbsp;&nbsp;&nbsp;&nbsp; RD	SR = r[RD]
+* 10000 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jump &nbsp;&nbsp;&nbsp;&nbsp; ADDR	pc = ADDR
+* 10001 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jumpl &nbsp;&nbsp;&nbsp;&nbsp; ADDR	if LESS == 1, pc = ADDR, else do nothing
+* 10010 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jumpe &nbsp;&nbsp;&nbsp;&nbsp; ADDR	if EQUAL == 1, pc = ADDR, else do nothing
+* 10011 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	jumpg &nbsp;&nbsp;&nbsp;&nbsp; ADDR	if GREATER == 1, pc = ADDR, else do nothing
+* 10100 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	call &nbsp;&nbsp;&nbsp;&nbsp; ADDR	push VM status; pc = ADDR
+* 10101 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	return &nbsp;&nbsp;&nbsp;&nbsp;	pop and restore VM status
+* 10110 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	read &nbsp;&nbsp;&nbsp;&nbsp; RD	read new content of r[RD] from .in file
+* 10111 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	write &nbsp;&nbsp;&nbsp;&nbsp; RD	write r[RD] into .out file
+* 11000 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	halt &nbsp;&nbsp;&nbsp;&nbsp;	halt execution
+* 11001 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	noop &nbsp;&nbsp;&nbsp;&nbsp;	no operation 
