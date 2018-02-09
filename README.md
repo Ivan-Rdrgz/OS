@@ -42,14 +42,14 @@ To simplify writing programs for the VM, we need an assembly language and its co
 
 # Instruction set
 *  OP	I	Instruction	Semantic in Pseudo C++ Syntax	          Additional Action
-*00000	0	load RD ADDR	r[RD] = mem[ADDR]	 
-*00000	1	loadi RD CONST	r[RD] = CONST	 
-*00001	1	store RD ADDR	mem[ADDR] = r[RD]	 
-*00010	0	add RD RS	r[RD] = r[RD] + r[RS]	                        Set CARRY
-*00010	1	addi RD CONST	r[RD] = r[RD] + CONST	                    Set CARRY
-*00011	0	addc RD RS	r[RD] = r[RD] + r[RS] + CARRY	              Set CARRY
-*00011	1	addci RD CONST	r[RD] = r[RD] + CONST + CARRY	          Set CARRY
-*00100	0	sub RD RS	r[RD] = r[RD] - r[RS]	                        Set CARRY
+* 00000	0	load RD ADDR	r[RD] = mem[ADDR]	 
+* 00000	1	loadi RD CONST	r[RD] = CONST	 
+* 00001	1	store RD ADDR	mem[ADDR] = r[RD]	 
+* 00010	0	add RD RS	r[RD] = r[RD] + r[RS]	                        Set CARRY
+* 00010	1	addi RD CONST	r[RD] = r[RD] + CONST	                    Set CARRY
+* 00011	0	addc RD RS	r[RD] = r[RD] + r[RS] + CARRY	              Set CARRY
+* 00011	1	addci RD CONST	r[RD] = r[RD] + CONST + CARRY	          Set CARRY
+* 00100	0	sub RD RS	r[RD] = r[RD] - r[RS]	                        Set CARRY
 *00100	1	subi RD CONST	r[RD] = r[RD] - CONST	                    Set CARRY
 *00101	0	subc RD RS	r[RD] = r[RD] - r[RS] - CARRY	              Set CARRY
 *00101	1	subci RD CONST	r[RD] = r[RD] - CONST - CARRY	          Set CARRY
