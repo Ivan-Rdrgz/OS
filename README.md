@@ -41,27 +41,27 @@ To simplify writing programs for the VM, we need an assembly language and its co
 
 
 # Instruction set
- &nbsp;&nbsp;&nbsp;&nbsp; OP &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;	I &nbsp;&nbsp;&nbsp;&nbsp;	Instruction &nbsp;&nbsp;&nbsp;&nbsp; 	Semantic in Pseudo C++ Syntax 	Additional Action|
+ &nbsp;&nbsp;&nbsp;&nbsp; OP &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;	I &nbsp;&nbsp;&nbsp;&nbsp;	Instruction &nbsp;&nbsp;&nbsp;&nbsp; 	Semantic in Pseudo C++ Syntax  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 	Additional Action
 * 00000 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	load  &nbsp;&nbsp;&nbsp;&nbsp; RD ADDR 	r[RD] = mem[ADDR]
 * 00000 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	loadi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = CONST
 * 00001 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	store &nbsp;&nbsp;&nbsp;&nbsp; RD ADDR	mem[ADDR] = r[RD]
-* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	add &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] + r[RS]	Set CARRY
-* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp; 	addi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] + CONST	Set CARRY
-* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	addc &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] + r[RS] + CARRY	Set CARRY
-* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	addci &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] + CONST + CARRY	Set CARRY
-* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	sub &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] - r[RS]	Set CARRY
-* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] - CONST	Set CARRY
-* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	subc &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] - r[RS] - CARRY	Set CARRY
-* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subci &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] - CONST - CARRY	Set CARRY
+* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	add &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] + r[RS]	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 00010 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp; 	addi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] + CONST &nbsp;&nbsp;&nbsp;&nbsp;	Set CARRY
+* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	addc &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] + r[RS] + CARRY	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 00011 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	addci &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] + CONST + CARRY	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	sub &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] - r[RS]	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 00100 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] - CONST	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	subc &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] - r[RS] - CARRY	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 00101 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	subci &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] - CONST - CARRY	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
 * 00110 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	and &nbsp;&nbsp;&nbsp;&nbsp; RD RS	r[RD] = r[RD] & r[RS]
 * 00110 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	andi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = r[RD] & CONST
 * 00111 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	xor  &nbsp;&nbsp;&nbsp;&nbsp;RD RS	r[RD] = r[RD] ^ r[RS]
 * 00111 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	xori  &nbsp;&nbsp;&nbsp;&nbsp;RD CONST	r[RD] = r[RD] ^ CONST
 * 01000 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	compl &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = ~ r[RD]
-* 01001 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shl &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = r[RD] << 1, shift-in-bit = 0	Set CARRY
-* 01010 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shla &nbsp;&nbsp;&nbsp;&nbsp; RD	shl arithmetic	Set CARRY & Sign Extend
-* 01011 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shr &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = r[RD] >> 1, shift-in-bit = 0	Set CARRY
-* 01100 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shra &nbsp;&nbsp;&nbsp;&nbsp; RD	shr arithmetic	Set CARRY & Sign Extend
+* 01001 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shl &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = r[RD] << 1, shift-in-bit = 0	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 01010 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shla &nbsp;&nbsp;&nbsp;&nbsp; RD	shl arithmetic	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY & Sign Extend
+* 01011 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shr &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = r[RD] >> 1, shift-in-bit = 0	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY
+* 01100 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	shra &nbsp;&nbsp;&nbsp;&nbsp; RD	shr arithmetic	 &nbsp;&nbsp;&nbsp;&nbsp;Set CARRY & Sign Extend
 * 01101 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	compr &nbsp;&nbsp;&nbsp;&nbsp; RD RS	if r[RD] < r[RS] set LESS reset EQUAL and GREATER; if r[RD] == r[RS] set EQUAL reset LESS and GREATER; if 			r[RD] > r[RS] set GREATER reset EQUAL and LESS
 * 01101 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	compri &nbsp;&nbsp;&nbsp;&nbsp; RD CONST if r[RD] < CONST set LESS reset EQUAL and GREATER; if r[RD] == CONST set EQUAL reset LESS and GREATER; if 			r[RD] > CONST set GREATER reset EQUAL and LESS
 * 01110 &nbsp;&nbsp;&nbsp;&nbsp;	d &nbsp;&nbsp;&nbsp;&nbsp;	getstat &nbsp;&nbsp;&nbsp;&nbsp; RD	r[RD] = SR
