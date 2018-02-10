@@ -45,6 +45,9 @@ To simplify writing programs for the VM, we need an assembly language and its co
 
 
 # Instruction set
+Inline-style: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+
  &nbsp;&nbsp;&nbsp;&nbsp; OP &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;	I &nbsp;&nbsp;&nbsp;&nbsp;	Instruction &nbsp;&nbsp;&nbsp;&nbsp; 	Semantic in Pseudo C++ Syntax  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 	Additional Action
 * 00000 &nbsp;&nbsp;&nbsp;&nbsp;	0 &nbsp;&nbsp;&nbsp;&nbsp;	load  &nbsp;&nbsp;&nbsp;&nbsp; RD ADDR 	r[RD] = mem[ADDR]
 * 00000 &nbsp;&nbsp;&nbsp;&nbsp;	1 &nbsp;&nbsp;&nbsp;&nbsp;	loadi &nbsp;&nbsp;&nbsp;&nbsp; RD CONST	r[RD] = CONST
