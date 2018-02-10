@@ -1,6 +1,10 @@
 # Toy OS project
 C++ program to simulate a simple 16-bit CPU or Virtual Machine (VM) consisting of 4 general purpose registers (r[0]-r[3]) a program counter (pc), an instruction register (ir), a status register (sr), a stack pointer (sp), a clock, an arithmetic and logic unit (ALU), a 256 word memory (mem) with base and limit registers, and a disk. 
 The general purpose registers are represented by a vector of 4 integers, mem is represented by a vector of 256 integers, pc is represented by an integer, ir is represented by an integer, etc.
+# Running 
+1. *make run*
+2. *./run example.s*
+3. *make clean* (removes object files)
 
 # Building
 the three main folders are "programs", "inputs", and "outputs". The program files should be placed in the "programs" folder and have a ".s" extention, any inputs to the program should have a ".in" extension and be placed in the "inputs" folder, the output files will appear in the "outputs" folder. 
