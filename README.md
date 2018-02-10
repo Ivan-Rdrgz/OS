@@ -45,4 +45,5 @@ To simplify writing programs for the VM, we need an assembly language and its co
 
 
 # Instruction set 
-![alt text](https://github.com/Ivan-Rdrgz/OS/blob/master/instruction_sheet.png =250x)
+![alt text](https://github.com/Ivan-Rdrgz/OS/blob/master/instruction_sheet.png)
+<img src="https://github.com/Ivan-Rdrgz/OS/blob/master/instruction_sheet.png" alt="alt text" width="75%">
