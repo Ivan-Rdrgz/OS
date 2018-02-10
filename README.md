@@ -44,8 +44,7 @@ To simplify writing programs for the VM, we need an assembly language and its co
 
 
 
-# Instruction set
-Inline-style: 
+# Instruction set 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
 
  &nbsp;&nbsp;&nbsp;&nbsp; OP &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;	I &nbsp;&nbsp;&nbsp;&nbsp;	Instruction &nbsp;&nbsp;&nbsp;&nbsp; 	Semantic in Pseudo C++ Syntax  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 	Additional Action
